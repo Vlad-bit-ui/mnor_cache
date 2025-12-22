@@ -1,0 +1,81 @@
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            @keyframes float {
+
+                                0%,
+                                100% {
+                                    transform: translate(0, 0) rotate(0deg);
+                                }
+
+                                50% {
+                                    transform: translate(2px, -1px) rotate(1deg);
+                                }
+                            }
+
+                            @keyframes trail {
+                                0% {
+                                    opacity: 0;
+                                    transform: translateX(-4px) scale(0.8);
+                                }
+
+                                50% {
+                                    opacity: 0.6;
+                                }
+
+                                100% {
+                                    opacity: 0;
+                                    transform: translateX(0) scale(1);
+                                }
+                            }
+
+                            .plane-body {
+                                animation: float 3s ease-in-out infinite;
+                            }
+
+                            .trail {
+                                animation: trail 1.5s ease-out infinite;
+                            }
+
+                            .white-highlight {
+                                fill: white;
+                                fill-opacity: 0.15;
+                                transition: all 0.3s ease;
+                                filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+                            }
+
+                            .white-highlight:hover {
+                                fill-opacity: 0.35;
+                                filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+                            }
+
+                            svg:hover .white-highlight {
+                                fill-opacity: 0.35;
+                                filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+                            }
+                        </style>
+
+                        <defs>
+                            <linearGradient id="vibrantGradient">
+                                <stop offset="0%" stop-color="#FF9A9E" />
+                                <stop offset="50%" stop-color="#FAD0C4" />
+                                <stop offset="100%" stop-color="#A18CD1" />
+                            </linearGradient>
+
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <ellipse class="trail" cx="10" cy="16" rx="3" ry="2" fill="#FF9A9E" opacity="0.3" />
+
+                        <path class="plane-body"
+                            d="M8 10C8 8.343 9.343 7 11 7C11.258 7 11.511 7.044 11.75 7.129L27.75 13.129C28.745 13.464 29.267 14.536 28.932 15.531C28.836 15.81 28.673 16.062 28.456 16.265L11.456 29.265C10.31 30.326 8.59 30.326 7.444 29.265C6.887 28.747 6.557 28.012 6.529 27.235L8 18L17 13L8 8L8 10Z"
+                            fill="url(#vibrantGradient)" />
+
+                        <path class="white-highlight"
+                            d="M8 18L17 13L8 8L11.75 7.129L28.932 15.531L11.456 29.265L8 18Z" />
+                    </svg>
